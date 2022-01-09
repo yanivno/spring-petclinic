@@ -18,7 +18,7 @@ pipeline {
         stage("Build and Test") {
             agent{
                 docker {
-                    image "maven:3.8.4-jdk-8"
+                    image "maven:3.8.4-jdk-11"
                     args "-v ${workspace}:/app -w /app"
                     reuseNode true
                 }
