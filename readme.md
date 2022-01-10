@@ -61,5 +61,9 @@ Go to Pipeline section and configure:
 Save and Build Now to run the pipeline in Jenkins
 
 ## Running the application
+pre-compiled image (publicly available):
+
 docker run -p 5000:8080 yanivnorman.jfrog.io/default-docker-local/petclinic:57
+
 browse to http://localhost:5000
+
