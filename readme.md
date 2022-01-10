@@ -57,6 +57,7 @@ Go to Pipeline section and configure:
   - Repository URL : https://github.com/yanivno/spring-petclinic.git
   - Branches to build - Branch Specifier : */main
   - Script Path : Jenkinsfile
+  
 Save and Build Now to run the pipeline in Jenkins
 
 ## Running the application
