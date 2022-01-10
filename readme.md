@@ -15,36 +15,38 @@
 #Prerequisites to compile run the pipeline in Jenkins
 
 ### docker installation
-Ubuntu installation instructions are in https://docs.docker.com/engine/install/ubuntu/
+(Ubuntu) installation instructions are in https://docs.docker.com/engine/install/ubuntu/
 validate with docker ps && docker --version
 
 ### java openjdk-8-jre installation
 (Ubuntu) apt install openjdk-8-jre -y
 
 ### Jenkins installation
-Installation file download through https://www.jenkins.io/download/
+(Ubuntu) Installation file download through https://www.jenkins.io/download/
 
 ### Install Docker & Docker pipeline plugins in Jenkins
-default plugins - install Docker & Docker pipeline plugin
+After configuring Jenkins, using the default plugins, we need to install Docker & Docker pipeline plugin
 Manage Jenkins > Manage Plugins > slide to "Available" and locate Docker, Docker pipeline and installed them.
 a reboot to jenkins might be required
 
 ### Giving permissions to jenkins account to run docker containers on node
 on ubuntu we need to give permissions to jenkins service account to connect to docker.sock
 with a slight variation of https://docs.docker.com/engine/install/linux-postinstall/
+```
 sudo groupadd docker
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
+```
 
 ## Configure pipeline on Jenkins
 
 ### configure credentials for Docker repo on Artifactory
 Manage Jenkins > Manage Credentials (under Security) > Select Jenkins (default store) > select "Global Credentials (unrestricted) > Add Credentials (side menu):
-Kind : Username and Password
-Scope : Global
-ID: rt-yanivnorman-jfrog-io-docker
-Username: yaniv.no@gmail.com
-Password: Aa123456!
+  - Kind : Username and Password
+  - Scope : Global
+  - ID: rt-yanivnorman-jfrog-io-docker
+  - Username: yaniv.no@gmail.com
+  - Password: Aa123456!
 
 ### create a new pipeline
 New Item
@@ -66,4 +68,3 @@ pre-compiled image (publicly available):
 docker run -p 5000:8080 yanivnorman.jfrog.io/default-docker-local/petclinic:57
 
 browse to http://localhost:5000
-
